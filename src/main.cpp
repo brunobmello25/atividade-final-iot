@@ -26,7 +26,7 @@ void loop()
   int currentLight = lightSensorController.getLight();
 
   Serial.println(currentLight);
-  ledController.toggle(currentLight < 400);
+  ledController.toggle(currentLight < 500);
 
   delay(500);
 }
