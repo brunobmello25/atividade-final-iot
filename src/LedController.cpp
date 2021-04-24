@@ -27,9 +27,18 @@ LedController::LedController(int redPin, int greenPin, int bluePin)
 
 void LedController::loop()
 {
-  ledcWrite(this->pwmRedChannel, this->redAmount);
-  ledcWrite(this->pwmGreenChannel, this->greenAmount);
-  ledcWrite(this->pwmBlueChannel, this->blueAmount);
+  if (this->lightsOn)
+  {
+    ledcWrite(this->pwmRedChannel, this->redAmount);
+    ledcWrite(this->pwmGreenChannel, this->greenAmount);
+    ledcWrite(this->pwmBlueChannel, this->blueAmount);
+  }
+  else
+  {
+    ledcWrite(this->pwmRedChannel, 0);
+    ledcWrite(this->pwmGreenChannel, 0);
+    ledcWrite(this->pwmBlueChannel, 0);
+  }
 }
 
 void LedController::updateColor(int red, int green, int blue)
@@ -47,4 +56,9 @@ int LedController::normalize(int num)
     return 0;
 
   return num;
+}
+
+void LedController::toggle(boolean value)
+{
+  this->lightsOn = value;
 }

@@ -12,6 +12,8 @@ public:
 
   void updateColor(int red, int green, int blue);
 
+  void toggle(boolean ligthsOn);
+
 private:
   int normalize(int num);
 
@@ -28,6 +30,8 @@ private:
   const int pwmGreenChannel = 1;
   const int pwmBlueChannel = 2;
   const int pwdResolution = 8;
+
+  boolean lightsOn = false;
 };
 
 #endif
