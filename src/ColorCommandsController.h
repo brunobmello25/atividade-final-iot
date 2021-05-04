@@ -1,15 +1,15 @@
-#ifndef COLOR_CONTROLLER_H
-#define COLOR_CONTROLLER_H
+#ifndef COLOR_COMMANDS_CONTROLLER_H
+#define COLOR_COMMANDS_CONTROLLER_H
 
 // #include <Arduino.h>
 #include <PubSubClient.h>
 #include <WiFi.h>
 #include <ArduinoJson.h>
 
-class ColorController
+class ColorCommandsController
 {
 public:
-  ColorController();
+  ColorCommandsController();
 
   void loop();
 

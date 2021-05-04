@@ -1,6 +1,6 @@
 #include "ColorController.h"
 
-ColorController::ColorController()
+ColorCommandsController::ColorCommandsController()
 {
   this->WIFI = WiFiClient();
   this->MQTT = PubSubClient(this->WIFI);
@@ -13,7 +13,7 @@ ColorController::ColorController()
   this->colors[2] = 100;
 }
 
-void ColorController::loop()
+void ColorCommandsController::loop()
 {
   this->connectWifi();
   // this->connectMqtt();
@@ -21,12 +21,12 @@ void ColorController::loop()
   // this->MQTT.loop();
 }
 
-int *ColorController::getColors()
+int *ColorCommandsController::getColors()
 {
   return this->colors;
 }
 
-void ColorController::connectWifi()
+void ColorCommandsController::connectWifi()
 {
   if (WiFi.status() == WL_CONNECTED)
     return;
@@ -39,14 +39,14 @@ void ColorController::connectWifi()
   }
 }
 
-void ColorController::initializeMqtt()
+void ColorCommandsController::initializeMqtt()
 {
   this->MQTT.setServer(this->BROKER_URL, this->BROKER_PORT);
 
-  this->MQTT.setCallback(ColorController::callback);
+  this->MQTT.setCallback(ColorCommandsController::callback);
 }
 
-void ColorController::connectMqtt()
+void ColorCommandsController::connectMqtt()
 {
   while (!this->MQTT.connected())
   {
@@ -58,7 +58,7 @@ void ColorController::connectMqtt()
   }
 }
 
-void ColorController::callback(char *topic, byte *payload, unsigned int length)
+void ColorCommandsController::callback(char *topic, byte *payload, unsigned int length)
 {
   String msg;
 

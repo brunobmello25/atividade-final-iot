@@ -4,7 +4,7 @@
 #include <Arduino.h>
 #include <LightSensorController.h>
 #include <LedController.h>
-#include <ColorController.h>
+#include <ColorCommandsController.h>
 
 class MainController
 {
@@ -17,7 +17,7 @@ private:
 
   LedController ledController;
   LightSensorController lightSensorController;
-  ColorController colorController;
+  ColorCommandsController colorCommandsController;
 
   void updateLight();
   void updateColor();

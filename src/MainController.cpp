@@ -8,7 +8,7 @@
 // #define GREEN_PIN 25
 // #define BLUE_PIN 27
 
-MainController::MainController() : ledController(RED_PIN, GREEN_PIN, BLUE_PIN), lightSensorController(LIGHT_SENSOR_PIN), colorController()
+MainController::MainController() : ledController(RED_PIN, GREEN_PIN, BLUE_PIN), lightSensorController(LIGHT_SENSOR_PIN), colorCommandsController()
 {
   Serial.begin(115200);
 }
@@ -17,7 +17,7 @@ void MainController::loop()
 {
   this->ledController.loop();
   this->lightSensorController.loop();
-  this->colorController.loop();
+  this->colorCommandsController.loop();
 
   this->updateLight();
   // this->updateColor();
