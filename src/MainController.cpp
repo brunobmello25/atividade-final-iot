@@ -1,34 +1,38 @@
 #include "MainController.h"
 
-#include <Arduino.h>
-
+#define LIGHT_SENSOR_PIN 34
 #define RED_PIN 32
 #define GREEN_PIN 33
-// #define GREEN_PIN 25
 #define BLUE_PIN 25
+// #define RED_PIN 32
+// #define GREEN_PIN 25
 // #define BLUE_PIN 27
-#define LIGHT_SENSOR_PIN 12
 
-MainController::MainController() : ledController(RED_PIN, GREEN_PIN, BLUE_PIN), lightSensorController(LIGHT_SENSOR_PIN)
+MainController::MainController() : ledController(RED_PIN, GREEN_PIN, BLUE_PIN), lightSensorController(LIGHT_SENSOR_PIN), colorController()
 {
   Serial.begin(115200);
-  this->ledController.updateColor(10, 0, 10);
 }
 
 void MainController::loop()
 {
   this->ledController.loop();
   this->lightSensorController.loop();
+  this->colorController.loop();
 
   this->updateLight();
+  // this->updateColor();
+}
 
-  delay(500);
+void MainController::updateColor()
+{
+  // int *colors = this->colorController.getColors();
+
+  // this->ledController.updateColor(colors[0], colors[1], colors[2]);
 }
 
 void MainController::updateLight()
 {
   int currentLight = this->lightSensorController.getLight();
 
-  Serial.println(currentLight);
   this->ledController.toggle(currentLight < this->lightLimit);
 }

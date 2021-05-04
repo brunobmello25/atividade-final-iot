@@ -4,6 +4,7 @@
 #include <Arduino.h>
 #include <LightSensorController.h>
 #include <LedController.h>
+#include <ColorController.h>
 
 class MainController
 {
@@ -13,10 +14,13 @@ public:
 
 private:
   int lightLimit = 500;
+
   LedController ledController;
   LightSensorController lightSensorController;
-  boolean lightsOn = false;
+  ColorController colorController;
+
   void updateLight();
+  void updateColor();
 };
 
 #endif
