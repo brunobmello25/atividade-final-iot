@@ -1,15 +1,15 @@
-#ifndef COLOR_COMMANDS_CONTROLLER_H
-#define COLOR_COMMANDS_CONTROLLER_H
+#ifndef MQTT_COMMANDS_CONTROLLER_H
+#define MQTT_COMMANDS_CONTROLLER_H
 
 // #include <Arduino.h>
 #include <PubSubClient.h>
 #include <WiFi.h>
 #include <ArduinoJson.h>
 
-class ColorCommandsController
+class MqttCommandsController
 {
 public:
-  ColorCommandsController();
+  MqttCommandsController();
 
   void loop();
 

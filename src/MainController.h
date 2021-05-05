@@ -4,7 +4,7 @@
 #include <Arduino.h>
 #include <LightSensorController.h>
 #include <LedController.h>
-#include <ColorCommandsController.h>
+#include <MqttCommandsController.h>
 
 class MainController
 {
@@ -13,11 +13,11 @@ public:
   void loop();
 
 private:
-  int lightLimit = 600;
+  int lightLimit = 800;
 
   LedController ledController;
   LightSensorController lightSensorController;
-  ColorCommandsController colorCommandsController;
+  MqttCommandsController colorCommandsController;
 
   void updateLight();
   void updateColor();
