@@ -1,4 +1,4 @@
-#include "ColorController.h"
+#include "ColorCommandsController.h"
 
 ColorCommandsController::ColorCommandsController()
 {
@@ -16,9 +16,9 @@ ColorCommandsController::ColorCommandsController()
 void ColorCommandsController::loop()
 {
   this->connectWifi();
-  // this->connectMqtt();
+  this->connectMqtt();
 
-  // this->MQTT.loop();
+  this->MQTT.loop();
 }
 
 int *ColorCommandsController::getColors()

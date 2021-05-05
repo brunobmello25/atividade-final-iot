@@ -13,7 +13,7 @@ public:
   void loop();
 
 private:
-  int lightLimit = 500;
+  int lightLimit = 600;
 
   LedController ledController;
   LightSensorController lightSensorController;
