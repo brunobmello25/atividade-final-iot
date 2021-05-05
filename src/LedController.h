@@ -2,6 +2,7 @@
 #define LED_CONTROLLER_H
 
 #include <Arduino.h>
+#include <ArduinoJson.h>
 
 class LedController
 {
@@ -11,7 +12,7 @@ public:
   void setup(int redPin, int greenPin, int bluePin);
   void loop();
 
-  void updateColor(int red, int green, int blue);
+  void updateColor(DynamicJsonDocument colors);
 
   void toggle(boolean ligthsOn);
 

@@ -1,7 +1,5 @@
 #include "LedController.h"
 
-#include <Arduino.h>
-
 LedController::LedController()
 {
 }
@@ -45,11 +43,11 @@ void LedController::loop()
   }
 }
 
-void LedController::updateColor(int red, int green, int blue)
+void LedController::updateColor(DynamicJsonDocument colors)
 {
-  this->redAmount = normalize(red);
-  this->greenAmount = normalize(green);
-  this->blueAmount = normalize(blue);
+  this->redAmount = normalize(colors["red"]);
+  this->greenAmount = normalize(colors["green"]);
+  this->blueAmount = normalize(colors["blue"]);
 }
 
 int LedController::normalize(int num)
