@@ -10,17 +10,17 @@ class MainController
 {
 public:
   MainController();
+  void setup();
   void loop();
 
 private:
   int lightLimit = 800;
 
+  void updateLight();
+
   LedController ledController;
   LightSensorController lightSensorController;
-  MqttCommandsController colorCommandsController;
-
-  void updateLight();
-  void updateColor();
+  MqttCommandsController mqttCommandsController;
 };
 
 #endif

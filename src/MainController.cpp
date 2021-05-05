@@ -8,26 +8,26 @@
 // #define GREEN_PIN 25
 // #define BLUE_PIN 27
 
-MainController::MainController() : ledController(RED_PIN, GREEN_PIN, BLUE_PIN), lightSensorController(LIGHT_SENSOR_PIN), colorCommandsController()
+MainController::MainController() : ledController(), lightSensorController(), mqttCommandsController()
+{
+}
+
+void MainController::setup()
 {
   Serial.begin(115200);
+
+  this->ledController.setup(RED_PIN, GREEN_PIN, BLUE_PIN);
+  this->lightSensorController.setup(LIGHT_SENSOR_PIN);
+  this->mqttCommandsController.setup();
 }
 
 void MainController::loop()
 {
   this->ledController.loop();
   this->lightSensorController.loop();
-  this->colorCommandsController.loop();
+  this->mqttCommandsController.loop();
 
   this->updateLight();
-  // this->updateColor();
-}
-
-void MainController::updateColor()
-{
-  // int *colors = this->colorController.getColors();
-
-  // this->ledController.updateColor(colors[0], colors[1], colors[2]);
 }
 
 void MainController::updateLight()

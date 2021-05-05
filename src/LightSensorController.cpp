@@ -2,8 +2,13 @@
 
 #include <Arduino.h>
 
-LightSensorController::LightSensorController(int sensorPin)
+LightSensorController::LightSensorController()
 {
+}
+
+void LightSensorController::setup(int sensorPin)
+{
+
   this->sensorPin = sensorPin;
 
   pinMode(this->sensorPin, INPUT);

@@ -6,8 +6,9 @@
 class LightSensorController
 {
 public:
-  LightSensorController(int sensorPin);
+  LightSensorController();
 
+  void setup(int sensorPin);
   void loop();
   int getLight();
 

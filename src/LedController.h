@@ -6,8 +6,9 @@
 class LedController
 {
 public:
-  LedController(int redPin, int greenPin, int bluePin);
+  LedController();
 
+  void setup(int redPin, int greenPin, int bluePin);
   void loop();
 
   void updateColor(int red, int green, int blue);

@@ -6,6 +6,7 @@ MainController mainController;
 
 void setup()
 {
+  mainController.setup();
 }
 
 void loop()

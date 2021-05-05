@@ -4,13 +4,11 @@ MqttCommandsController::MqttCommandsController()
 {
   this->WIFI = WiFiClient();
   this->MQTT = PubSubClient(this->WIFI);
+}
 
+void MqttCommandsController::setup()
+{
   this->initializeMqtt();
-
-  this->colors = new int[3];
-  this->colors[0] = 100;
-  this->colors[1] = 0;
-  this->colors[2] = 100;
 }
 
 void MqttCommandsController::loop()
@@ -19,11 +17,6 @@ void MqttCommandsController::loop()
   this->connectMqtt();
 
   this->MQTT.loop();
-}
-
-int *MqttCommandsController::getColors()
-{
-  return this->colors;
 }
 
 void MqttCommandsController::connectWifi()
@@ -53,7 +46,7 @@ void MqttCommandsController::connectMqtt()
     Serial.println("connect mqtt");
     if (this->MQTT.connect(this->CLIENT))
     {
-      this->MQTT.subscribe(this->TOPIC);
+      this->MQTT.subscribe(this->COLOR_TOPIC);
     }
   }
 }

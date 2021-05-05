@@ -2,7 +2,11 @@
 
 #include <Arduino.h>
 
-LedController::LedController(int redPin, int greenPin, int bluePin)
+LedController::LedController()
+{
+}
+
+void LedController::setup(int redPin, int greenPin, int bluePin)
 {
   pinMode(redPin, OUTPUT);
   pinMode(greenPin, OUTPUT);
