@@ -59,9 +59,11 @@ void MqttCommandsController::connectMqtt()
 
 void MqttCommandsController::callback(char *topic, byte *payload, unsigned int length)
 {
-  DynamicJsonDocument parsedPayload(length);
+  DynamicJsonDocument parsedPayload(64);
   deserializeJson(parsedPayload, payload);
 
   if (String(topic) == "color_control")
-    Serial.println("command");
+  {
+    this->ledController->updateColor(parsedPayload);
+  }
 }
