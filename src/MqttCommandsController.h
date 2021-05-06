@@ -1,15 +1,15 @@
 #ifndef MQTT_COMMANDS_CONTROLLER_H
 #define MQTT_COMMANDS_CONTROLLER_H
 
-// #include <Arduino.h>
 #include <PubSubClient.h>
 #include <WiFi.h>
 #include <ArduinoJson.h>
+#include <LedController.h>
 
 class MqttCommandsController
 {
 public:
-  MqttCommandsController();
+  MqttCommandsController(LedController &ledController);
 
   void setup();
   void loop();
@@ -19,7 +19,7 @@ private:
   void connectMqtt();
   void initializeMqtt();
 
-  static void callback(char *topic, byte *payload, unsigned int length);
+  void callback(char *topic, byte *payload, unsigned int length);
 
   const char *WIFI_SSID = "bruno";
   const char *WIFI_PASSWORD = "13337605";
@@ -31,6 +31,8 @@ private:
 
   WiFiClient WIFI;
   PubSubClient MQTT;
+
+  LedController *ledController;
 };
 
 #endif

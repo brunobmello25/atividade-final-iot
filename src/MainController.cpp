@@ -8,7 +8,7 @@
 // #define GREEN_PIN 25
 // #define BLUE_PIN 27
 
-MainController::MainController() : ledController(), lightSensorController(), mqttCommandsController()
+MainController::MainController() : ledController(), lightSensorController(), mqttCommandsController(ledController)
 {
 }
 
